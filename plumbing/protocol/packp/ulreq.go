@@ -17,7 +17,10 @@ type UploadRequest struct {
 	Wants        []plumbing.Hash
 	Shallows     []plumbing.Hash
 	Depth        Depth
+	Filter       Filter
 }
+
+type Filter string
 
 // Depth values stores the desired depth of the requested packfile: see
 // DepthCommit, DepthSince and DepthReference.
@@ -64,6 +67,7 @@ func NewUploadRequest() *UploadRequest {
 		Wants:        []plumbing.Hash{},
 		Shallows:     []plumbing.Hash{},
 		Depth:        DepthCommits(0),
+		Filter:       "",
 	}
 }
 
